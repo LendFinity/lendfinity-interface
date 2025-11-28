@@ -108,6 +108,7 @@ export enum CustomMarket {
   proto_aptos_v3 = 'proto_aptos_v3',
   proto_plasma_v3 = 'proto_plasma_v3',
   proto_ink_v3 = 'proto_ink_v3',
+  proto_lendfinity_base_v3 = 'proto_lendfinity_base_v3',
   // v2
   proto_mainnet = 'proto_mainnet',
   proto_avalanche = 'proto_avalanche',
@@ -123,6 +124,36 @@ const apiKey = process.env.NEXT_PUBLIC_SUBGRAPH_API_KEY;
 export const marketsData: {
   [key in keyof typeof CustomMarket]: MarketDataType;
 } = {
+  [CustomMarket.proto_lendfinity_base_v3]: {
+    marketTitle: 'Lendfinity Base',
+    market: CustomMarket.proto_lendfinity_base_v3,
+    v3: true,
+    chainId: ChainId.base,
+    enabledFeatures: {
+      incentives: true,
+      liquiditySwap: false,
+      withdrawAndSwitch: false,
+      collateralRepay: true,
+      debtSwitch: true,
+      switch: true,
+    },
+    subgraphUrl: `https://gateway-arbitrum.network.thegraph.com/api/${apiKey}/subgraphs/id/GQFbb95cE6d8mV989mL5figjaGaKCQB3xqYrr1bRyXqF`,
+    addresses: {
+      LENDING_POOL_ADDRESS_PROVIDER: '0x47ed43E379B161c786B51a7C01AC7cC95F38a535',
+      LENDING_POOL: '0xF00748da26CBbBE963376C4fC8D5a8610ce5Cd2e',
+      WETH_GATEWAY: '0x33882f27CCf050e7A9254b43B9974D9516aAa534',
+      WALLET_BALANCE_PROVIDER: '0xb014e31a4880F5FEF4A3619D04B1Db788Cc0ea03',
+      UI_POOL_DATA_PROVIDER: '0xe6d6e8f0aE24B576d5393A4252FD33B1B7De53DE',
+      UI_INCENTIVE_DATA_PROVIDER: '0x06566b2d9686beB68F4E9769f2E1B413d50bB65A',
+      L2_ENCODER: '0x4915672dfB71E467d33Ea7c05b62D6392328FA48',
+      COLLECTOR: '',
+      REPAY_WITH_COLLATERAL_ADAPTER: '',
+      SWAP_COLLATERAL_ADAPTER: '',
+      WITHDRAW_SWITCH_ADAPTER: '',
+      DEBT_SWITCH_ADAPTER: '',
+      GHO_TOKEN_ADDRESS: '',
+    },
+  },
   [CustomMarket.proto_mainnet_v3]: {
     marketTitle: 'Core',
     market: CustomMarket.proto_mainnet_v3,

@@ -254,6 +254,8 @@ export const prodNetworkConfig: Record<string, BaseNetworkConfig> = {
   [ChainId.base]: {
     name: 'Base',
     publicJsonRPCUrl: [
+      'https://base-mainnet.g.alchemy.com/v2/ikgjpZaU-c2arvmLO0lU5',
+      'https://1rpc.io/base',
       'https://base.llamarpc.com',
       'https://1rpc.io/base',
       'https://base.publicnode.com',

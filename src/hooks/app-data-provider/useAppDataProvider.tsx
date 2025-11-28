@@ -80,7 +80,9 @@ export const AppDataProvider: React.FC<PropsWithChildren> = ({ children }) => {
   // loading
   const isReservesLoading = reservesDataLoading || formattedPoolReservesLoading;
   const isUserDataLoading = userReservesDataLoading || userSummaryLoading;
-
+  console.log({
+    formattedPoolReserves,
+  });
   return (
     <AppDataContext.Provider
       value={{

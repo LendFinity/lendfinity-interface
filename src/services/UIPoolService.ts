@@ -42,6 +42,11 @@ export class UiPoolService {
       return false;
     }
 
+    // Force legacy provider for Lendfinity market (v3.1 provider has compatibility issues)
+    if (marketData.market === CustomMarket.proto_lendfinity_base_v3) {
+      return true;
+    }
+
     if (ENABLE_TESTNET || !marketData.v3) {
       // it's a v2 market, or it does not have v3.1 upgrade
       return true;
@@ -52,9 +57,11 @@ export class UiPoolService {
 
   async getReservesHumanized(marketData: MarketDataType): Promise<ReservesDataHumanized> {
     const uiPoolDataProvider = await this.getUiPoolDataService(marketData);
-    return uiPoolDataProvider.getReservesHumanized({
+    const a = await uiPoolDataProvider.getReservesHumanized({
       lendingPoolAddressProvider: marketData.addresses.LENDING_POOL_ADDRESS_PROVIDER,
     });
+    console.log(a);
+    return a;
   }
 
   async getUserReservesHumanized(
@@ -69,6 +76,13 @@ export class UiPoolService {
   }
 
   async getEModesHumanized(marketData: MarketDataType): Promise<EmodeDataHumanized[]> {
+    // Skip EModes for markets where it's not configured
+    if (
+      marketData.market === CustomMarket.proto_base_v3 ||
+      marketData.market === CustomMarket.proto_lendfinity_base_v3
+    ) {
+      return [];
+    }
     const uiPoolDataProvider = await this.getUiPoolDataService(marketData);
     return uiPoolDataProvider.getEModesHumanized({
       lendingPoolAddressProvider: marketData.addresses.LENDING_POOL_ADDRESS_PROVIDER,
