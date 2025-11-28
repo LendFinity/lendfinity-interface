@@ -6,6 +6,8 @@ import { CONSENT_KEY } from 'src/store/analyticsSlice';
 import { useRootStore } from 'src/store/root';
 import { useShallow } from 'zustand/shallow';
 
+const enableAnalytics = false;
+
 export default function AnalyticsBanner() {
   const [optInAnalytics, optOutAnalytics, analyticsConfigOpen] = useRootStore(
     useShallow((store) => [store.acceptAnalytics, store.rejectAnalytics, store.analyticsConfigOpen])
@@ -32,6 +34,8 @@ export default function AnalyticsBanner() {
 
   // Note: If they have already chosen don't show again unless configured from footer
   if (hasUserMadeChoice) return null;
+
+  if (!enableAnalytics) return null;
 
   return (
     <>

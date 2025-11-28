@@ -282,10 +282,6 @@ msgstr "Total Deposited"
 msgid "{0}{name}"
 msgstr "{0}{name}"
 
-#: src/components/TopInfoPanel/PageTitle.tsx
-msgid "Favourited"
-msgstr "Favourited"
-
 #: src/ui-config/errorMapping.tsx
 msgid "Stable borrowing is enabled"
 msgstr "Stable borrowing is enabled"
@@ -323,6 +319,10 @@ msgstr "{0} Balance{1}"
 #: src/components/transactions/Supply/SupplyWrappedTokenActions.tsx
 msgid "Supply {symbol}"
 msgstr "Supply {symbol}"
+
+#: src/layouts/AppFooter.tsx
+msgid "OpenChat"
+msgstr "OpenChat"
 
 #: src/components/transactions/Emode/EmodeModalContent.tsx
 #: src/components/transactions/Emode/EmodeModalContent.tsx
@@ -367,10 +367,6 @@ msgstr "View Transactions"
 #: src/modules/dashboard/LiquidationRiskParametresModal/components/LTVContent.tsx
 msgid "MAX"
 msgstr "MAX"
-
-#: src/layouts/AppFooter.tsx
-msgid "Terms"
-msgstr "Terms"
 
 #: src/modules/reserve-overview/Gho/GhoReserveTopDetails.tsx
 msgid "Maximum available to borrow"
@@ -826,10 +822,6 @@ msgstr "Migrate your assets"
 msgid "AAVE and ABPT holders (Ethereum network only) can stake their assets in the Safety Module to add more security to the protocol and earn Safety Incentives. In the case of a shortfall event, your stake can be slashed to cover the deficit, providing an additional layer of protection for the protocol."
 msgstr "AAVE and ABPT holders (Ethereum network only) can stake their assets in the Safety Module to add more security to the protocol and earn Safety Incentives. In the case of a shortfall event, your stake can be slashed to cover the deficit, providing an additional layer of protection for the protocol."
 
-#: src/layouts/components/NavItems.tsx
-msgid "Savings"
-msgstr "Savings"
-
 #: src/components/transactions/Emode/EmodeModalContent.tsx
 #: src/modules/dashboard/DashboardEModeButton.tsx
 msgid "Asset category"
@@ -915,7 +907,6 @@ msgid "Protocol Incentives"
 msgstr "Protocol Incentives"
 
 #: src/layouts/MobileMenu.tsx
-#: src/layouts/SettingsMenu.tsx
 msgid "Watch wallet"
 msgstr "Watch wallet"
 
@@ -1158,7 +1149,6 @@ msgstr "Unstake window"
 msgid "Reload"
 msgstr "Reload"
 
-#: src/layouts/components/NavItems.tsx
 #: src/modules/reserve-overview/Gho/SavingsGho.tsx
 #: src/modules/reserve-overview/Gho/SavingsGho.tsx
 #: src/modules/sGho/SGhoDepositPanel.tsx
@@ -1260,10 +1250,6 @@ msgstr "deposited"
 #: src/modules/umbrella/UmbrellaMarketSwitcher.tsx
 msgid "{0}"
 msgstr "{0}"
-
-#: src/layouts/AppFooter.tsx
-msgid "Manage analytics"
-msgstr "Manage analytics"
 
 #: src/components/transactions/Switch/SwitchLimitOrdersActions.tsx
 #: src/components/transactions/Switch/SwitchLimitOrdersActions.tsx
@@ -1388,7 +1374,6 @@ msgid "Merkl rewards are claimed through the"
 msgstr "Merkl rewards are claimed through the"
 
 #: src/components/transactions/Stake/StakeActions.tsx
-#: src/layouts/components/NavItems.tsx
 #: src/layouts/components/StakingMenu.tsx
 #: src/modules/umbrella/UmbrellaActions.tsx
 #: src/modules/umbrella/UmbrellaHeader.tsx
@@ -2627,10 +2612,6 @@ msgstr "You can not disable E-Mode because that could cause liquidation. To exit
 msgid "Powered by"
 msgstr "Powered by"
 
-#: src/layouts/AppFooter.tsx
-msgid "FAQS"
-msgstr "FAQS"
-
 #: src/modules/governance/proposal/VotersListModal.tsx
 msgid "Voted NAY"
 msgstr "Voted NAY"
@@ -2803,10 +2784,6 @@ msgstr "Estimated weekly rewards based on your current sGHO balance and APR. Act
 #: src/modules/dashboard/lists/SlippageList.tsx
 msgid "Select slippage tolerance"
 msgstr "Select slippage tolerance"
-
-#: src/layouts/AppFooter.tsx
-msgid "Get Support"
-msgstr "Get Support"
 
 #: src/components/transactions/TxActionsWrapper.tsx
 msgid "Enter an amount"
@@ -3068,10 +3045,6 @@ msgstr "Your {name} wallet is empty. Purchase or transfer assets or use <0>{0}</
 #: src/components/transactions/Switch/SwitchActions.tsx
 msgid "Checking approval"
 msgstr "Checking approval"
-
-#: src/components/TopInfoPanel/PageTitle.tsx
-msgid "Favourite"
-msgstr "Favourite"
 
 #: src/modules/staking/BuyWithFiat.tsx
 msgid "Buy {cryptoSymbol} with Fiat"
@@ -3468,10 +3441,6 @@ msgstr "Borrowed asset amount"
 #: src/modules/dashboard/DashboardEModeButton.tsx
 msgid "E-Mode"
 msgstr "E-Mode"
-
-#: src/layouts/AppFooter.tsx
-msgid "Privacy"
-msgstr "Privacy"
 
 #: src/components/WalletConnection/ReadOnlyModal.tsx
 msgid "Watch a wallet balance in read-only mode"

@@ -1,13 +1,11 @@
-import { StarIcon } from '@heroicons/react/solid';
 import { Trans } from '@lingui/macro';
-import { Box, Button, SvgIcon, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Button, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { ReactNode } from 'react';
 
 import { useRootStore } from '../../store/root';
 import { selectIsMigrationAvailable } from '../../store/v3MigrationSelectors';
 import { NetworkConfig } from '../../ui-config/networksConfig';
 // import { BridgeButton } from '../BridgeButton';
-import { MarketSwitcher } from '../MarketSwitcher';
 import { Link, ROUTES } from '../primitives/Link';
 
 export interface PageTitleProps extends Pick<NetworkConfig, 'bridge'> {
@@ -17,16 +15,9 @@ export interface PageTitleProps extends Pick<NetworkConfig, 'bridge'> {
   withFavoriteButton?: boolean;
 }
 
-export const PageTitle = ({
-  pageTitle,
-  withMarketSwitcher,
-  withMigrateButton,
-  withFavoriteButton,
-}: PageTitleProps) => {
+export const PageTitle = ({ pageTitle, withMarketSwitcher, withMigrateButton }: PageTitleProps) => {
   const isMigrateToV3Available = useRootStore((state) => selectIsMigrationAvailable(state));
-  const currentMarket = useRootStore((state) => state.currentMarket);
-  const isFavoriteMarket = useRootStore((state) => state.isFavoriteMarket);
-  const toggleFavoriteMarket = useRootStore((state) => state.toggleFavoriteMarket);
+
   // Subscribe to favoriteMarkets to trigger re-renders when favorites change
   useRootStore((state) => state.favoriteMarkets);
 
@@ -34,12 +25,6 @@ export const PageTitle = ({
   const upToLG = useMediaQuery(theme.breakpoints.up('lg'));
   // const upToMD = useMediaQuery(theme.breakpoints.up('md'));
   const downToXSM = useMediaQuery(theme.breakpoints.down('xsm'));
-
-  const isCurrentMarketFavorite = isFavoriteMarket(currentMarket);
-
-  const handleFavoriteClick = () => {
-    toggleFavoriteMarket(currentMarket);
-  };
 
   return (
     <Box
@@ -76,7 +61,7 @@ export const PageTitle = ({
         }}
       >
         <Box sx={{ display: 'flex', alignItems: 'flex-start', flexWrap: 'wrap' }}>
-          {withMarketSwitcher && <MarketSwitcher />}
+          {/* {withMarketSwitcher && <MarketSwitcher />} */}
           {/* <BridgeButton bridge={bridge} variant="surface" withoutIcon={!upToMD} /> */}
           {/* NOTE:// Removing for now  */}
           {isMigrateToV3Available && withMigrateButton && (
@@ -88,7 +73,7 @@ export const PageTitle = ({
           )}
         </Box>
 
-        {withFavoriteButton && (
+        {/* {withFavoriteButton && (
           <Button
             onClick={handleFavoriteClick}
             variant="surface"
@@ -116,7 +101,7 @@ export const PageTitle = ({
               {isCurrentMarketFavorite ? <Trans>Favourited</Trans> : <Trans>Favourite</Trans>}
             </Typography>
           </Button>
-        )}
+        )} */}
       </Box>
     </Box>
   );

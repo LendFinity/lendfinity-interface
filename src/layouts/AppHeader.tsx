@@ -1,16 +1,8 @@
-import {
-  InformationCircleIcon,
-  SparklesIcon,
-  SwitchHorizontalIcon,
-} from '@heroicons/react/outline';
+import { InformationCircleIcon } from '@heroicons/react/outline';
 import { Trans } from '@lingui/macro';
 import {
-  Badge,
   Button,
-  CircularProgress,
-  NoSsr,
   Slide,
-  styled,
   SvgIcon,
   Typography,
   useMediaQuery,
@@ -24,7 +16,6 @@ import { AvatarSize } from 'src/components/Avatar';
 import { ContentWithTooltip } from 'src/components/ContentWithTooltip';
 import { UserDisplay } from 'src/components/UserDisplay';
 import { ConnectWalletButton } from 'src/components/WalletConnection/ConnectWalletButton';
-import { useCowOrderToast } from 'src/hooks/useCowOrderToast';
 import { useModalContext } from 'src/hooks/useModal';
 import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
 import { useRootStore } from 'src/store/root';
@@ -41,38 +32,38 @@ interface Props {
   children: React.ReactElement;
 }
 
-const StyledBadge = styled(Badge)(({ theme }) => ({
-  '& .MuiBadge-badge': {
-    top: '2px',
-    right: '2px',
-    borderRadius: '20px',
-    width: '10px',
-    height: '10px',
-    backgroundColor: `${theme.palette.secondary.main}`,
-    color: `${theme.palette.secondary.main}`,
-    '&::after': {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      borderRadius: '50%',
-      animation: 'ripple 1.2s infinite ease-in-out',
-      border: '1px solid currentColor',
-      content: '""',
-    },
-  },
-  '@keyframes ripple': {
-    '0%': {
-      transform: 'scale(.8)',
-      opacity: 1,
-    },
-    '100%': {
-      transform: 'scale(2.4)',
-      opacity: 0,
-    },
-  },
-}));
+// const StyledBadge = styled(Badge)(({ theme }) => ({
+//   '& .MuiBadge-badge': {
+//     top: '2px',
+//     right: '2px',
+//     borderRadius: '20px',
+//     width: '10px',
+//     height: '10px',
+//     backgroundColor: `${theme.palette.secondary.main}`,
+//     color: `${theme.palette.secondary.main}`,
+//     '&::after': {
+//       position: 'absolute',
+//       top: 0,
+//       left: 0,
+//       width: '100%',
+//       height: '100%',
+//       borderRadius: '50%',
+//       animation: 'ripple 1.2s infinite ease-in-out',
+//       border: '1px solid currentColor',
+//       content: '""',
+//     },
+//   },
+//   '@keyframes ripple': {
+//     '0%': {
+//       transform: 'scale(.8)',
+//       opacity: 1,
+//     },
+//     '100%': {
+//       transform: 'scale(2.4)',
+//       opacity: 0,
+//     },
+//   },
+// }));
 
 function HideOnScroll({ children }: Props) {
   const { breakpoints } = useTheme();
@@ -86,18 +77,16 @@ function HideOnScroll({ children }: Props) {
   );
 }
 
-const SWITCH_VISITED_KEY = 'switchVisited';
-
 export function AppHeader() {
   const { breakpoints } = useTheme();
   const md = useMediaQuery(breakpoints.down('md'));
   const sm = useMediaQuery(breakpoints.down('sm'));
-  const smd = useMediaQuery('(max-width:1120px)');
+  // const smd = useMediaQuery('(max-width:1120px)');
 
-  const [, setVisitedSwitch] = useState(() => {
-    if (typeof window === 'undefined') return true;
-    return Boolean(localStorage.getItem(SWITCH_VISITED_KEY));
-  });
+  // const [, setVisitedSwitch] = useState(() => {
+  //   if (typeof window === 'undefined') return true;
+  //   return Boolean(localStorage.getItem(SWITCH_VISITED_KEY));
+  // });
 
   const [mobileDrawerOpen, setMobileDrawerOpen, currentMarketData] = useRootStore(
     useShallow((state) => [
@@ -107,11 +96,11 @@ export function AppHeader() {
     ])
   );
 
-  const { openSwitch, openBridge, openReadMode } = useModalContext();
+  const { openReadMode } = useModalContext();
   const { readOnlyMode } = useWeb3Context();
   const [walletWidgetOpen, setWalletWidgetOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { hasActiveOrders } = useCowOrderToast();
+  // const { hasActiveOrders } = useCowOrderToast();
 
   useEffect(() => {
     if (mobileDrawerOpen && !md) {
@@ -146,15 +135,15 @@ export function AppHeader() {
     window.location.href = '/';
   };
 
-  const handleSwitchClick = () => {
-    localStorage.setItem(SWITCH_VISITED_KEY, 'true');
-    setVisitedSwitch(true);
-    openSwitch();
-  };
+  // const handleSwitchClick = () => {
+  //   localStorage.setItem(SWITCH_VISITED_KEY, 'true');
+  //   setVisitedSwitch(true);
+  //   openSwitch();
+  // };
 
-  const handleBridgeClick = () => {
-    openBridge();
-  };
+  // const handleBridgeClick = () => {
+  //   openBridge();
+  // };
 
   const testnetTooltip = (
     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'start', gap: 1 }}>
@@ -225,7 +214,7 @@ export function AppHeader() {
           }}
           onClick={() => setMobileMenuOpen(false)}
         >
-          <img src={uiConfig.appLogo} alt="AAVE" width={72} height={20} />
+          <img src={uiConfig.appLogo} alt="Lendfinity" width={sm ? 74 : 120} height={20} />
         </Box>
         <Box sx={{ mr: sm ? 1 : 3 }}>
           {ENABLE_TESTNET && (
@@ -273,68 +262,6 @@ export function AppHeader() {
         </Box>
 
         <Box sx={{ flexGrow: 1 }} />
-
-        <NoSsr>
-          <StyledBadge
-            invisible={true}
-            // variant="dot"
-            badgeContent=""
-            color="secondary"
-            sx={{ mr: 2 }}
-          >
-            <Button
-              onClick={handleBridgeClick}
-              variant="surface"
-              sx={{ p: '7px 8px', minWidth: 'unset', gap: 2, alignItems: 'center' }}
-            >
-              {!smd && (
-                <Typography component="span" typography="subheader1">
-                  Bridge GHO
-                </Typography>
-              )}
-              <SvgIcon fontSize="small">
-                <SparklesIcon />
-              </SvgIcon>
-            </Button>
-          </StyledBadge>
-        </NoSsr>
-
-        <NoSsr>
-          <StyledBadge
-            invisible={true}
-            variant="dot"
-            badgeContent=""
-            color="secondary"
-            sx={{ mr: 2 }}
-          >
-            <Button
-              onClick={handleSwitchClick}
-              variant="surface"
-              sx={{ p: '7px 8px', minWidth: 'unset', gap: 2, alignItems: 'center' }}
-              aria-label="Switch tool"
-            >
-              {!smd && (
-                <Typography component="span" typography="subheader1">
-                  Swap
-                </Typography>
-              )}
-              <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                {hasActiveOrders ? (
-                  <CircularProgress
-                    size={20}
-                    sx={{
-                      color: (theme) => theme.palette.grey[200],
-                    }}
-                  />
-                ) : (
-                  <SvgIcon fontSize="small">
-                    <SwitchHorizontalIcon />
-                  </SvgIcon>
-                )}
-              </Box>
-            </Button>
-          </StyledBadge>
-        </NoSsr>
 
         {readOnlyMode ? (
           <Button

@@ -1,16 +1,26 @@
 import { Trans } from '@lingui/macro';
-import { GitHub, Twitter } from '@mui/icons-material';
+import { GitHub, Telegram, X, YouTube } from '@mui/icons-material';
 import { Box, styled, SvgIcon, Typography } from '@mui/material';
 import { Link } from 'src/components/primitives/Link';
-import { useRootStore } from 'src/store/root';
-import { useShallow } from 'zustand/shallow';
-
-import DiscordIcon from '/public/icons/discord.svg';
-import LensLogoIcon from '/public/icons/lens-logo.svg';
 
 interface StyledLinkProps {
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }
+
+const MediumIcon = () => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+  >
+    <path
+      d="M13.41 12.247c0 3.45-2.779 6.247-6.205 6.247C3.778 18.494 1 15.698 1 12.247S3.778 6 7.205 6c3.426 0 6.204 2.797 6.204 6.247Zm6.806 0c0 3.248-1.39 5.88-3.102 5.88-1.714 0-3.103-2.633-3.103-5.88s1.39-5.88 3.103-5.88c1.713 0 3.102 2.633 3.102 5.88Zm2.784 0c0 2.91-.489 5.269-1.091 5.269-.603 0-1.091-2.36-1.091-5.269 0-2.91.488-5.269 1.091-5.269S23 9.338 23 12.248Z"
+      fill="currentColor"
+    />
+  </svg>
+);
 
 const StyledLink = styled(Link)<StyledLinkProps>(({ theme }) => ({
   color: theme.palette.text.muted,
@@ -23,71 +33,77 @@ const StyledLink = styled(Link)<StyledLinkProps>(({ theme }) => ({
 
 const FOOTER_ICONS = [
   {
-    href: 'https://hey.xyz/u/aave',
-    icon: <LensLogoIcon />,
-    title: 'Aave',
+    href: 'https://t.me/lendfinity',
+    icon: <Telegram />,
+    title: 'Telegram',
   },
   {
-    href: 'https://twitter.com/aave',
-    icon: <Twitter />,
-    title: 'Lens',
+    href: 'https://x.com/lendfinity_xyz',
+    icon: <X />,
+    title: 'X',
   },
   {
-    href: 'https://discord.com/invite/aave',
-    icon: <DiscordIcon />,
-    title: 'Discord',
-  },
-  {
-    href: 'https://github.com/aave',
+    href: 'https://github.com/LendFinity',
     icon: <GitHub />,
     title: 'Github',
+  },
+  {
+    href: 'https://www.youtube.com/watch?v=7fvtINvTelI',
+    icon: <YouTube />,
+    title: 'YouTube',
+  },
+  {
+    href: 'https://medium.com/@lendfinity.xyz',
+    icon: <MediumIcon />,
+    title: 'Medium',
   },
 ];
 
 export function AppFooter() {
-  const [setAnalyticsConfigOpen, setFeedbackOpen] = useRootStore(
-    useShallow((store) => [store.setAnalyticsConfigOpen, store.setFeedbackOpen])
-  );
-
   const FOOTER_LINKS = [
+    // {
+    //   href: 'https://aave.com/terms-of-service',
+    //   label: <Trans>Terms</Trans>,
+    //   key: 'Terms',
+    // },
+    // {
+    //   href: 'https://aave.com/privacy-policy/',
+    //   label: <Trans>Privacy</Trans>,
+    //   key: 'Privacy',
+    // },
     {
-      href: 'https://aave.com/terms-of-service',
-      label: <Trans>Terms</Trans>,
-      key: 'Terms',
-    },
-    {
-      href: 'https://aave.com/privacy-policy/',
-      label: <Trans>Privacy</Trans>,
-      key: 'Privacy',
-    },
-    {
-      href: 'https://docs.aave.com/hub/',
+      href: 'https://docs.lendfinity.xyz',
       label: <Trans>Docs</Trans>,
       key: 'Docs',
     },
     {
-      href: 'https://docs.aave.com/faq/',
-      label: <Trans>FAQS</Trans>,
-      key: 'FAQS',
+      href: 'https://oc.app/community/x2pwb-5qaaa-aaaaf-bn3vq-cai/channel/1840340961',
+      label: <Trans>OpenChat</Trans>,
+      key: 'OpenChat',
     },
-    {
-      href: 'https://discord.com/invite/aave',
-      label: <Trans>Get Support</Trans>,
-      key: 'Get Support',
-      onClick: (event: React.MouseEvent) => {
-        event.preventDefault();
-        setFeedbackOpen(true);
-      },
-    },
-    {
-      href: '/',
-      label: <Trans>Manage analytics</Trans>,
-      key: 'Manage analytics',
-      onClick: (event: React.MouseEvent) => {
-        event.preventDefault();
-        setAnalyticsConfigOpen(true);
-      },
-    },
+    // {
+    //   href: 'https://docs.aave.com/faq/',
+    //   label: <Trans>FAQS</Trans>,
+    //   key: 'FAQS',
+    // },
+    // {
+    //   href: 'https://discord.com/invite/aave',
+    //   label: <Trans>Get Support</Trans>,
+    //   key: 'Get Support',
+    //   onClick: (event: React.MouseEvent) => {
+    //     event.preventDefault();
+    //     setFeedbackOpen(true);
+    //   },
+    // },
+    // {
+    //   href: '/',
+    //   label: <Trans>Manage analytics</Trans>,
+    //   key: 'Manage analytics',
+    //   onClick: (event: React.MouseEvent) => {
+    //     event.preventDefault();
+    //     setAnalyticsConfigOpen(true);
+    //   },
+    // },
   ];
 
   return (

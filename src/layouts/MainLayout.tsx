@@ -18,16 +18,16 @@ const getCampaignConfigs = (
   // openSwitch: (underlyingAsset: string) => void,
   openMarket: (market: CustomMarket) => void
 ) => ({
-  [ChainId.base]: {
-    notifyText: 'A new incentives campaign is live on the Base market',
-    buttonText: 'Explore Base',
-    buttonAction: {
-      type: 'route' as const,
-      value: '/markets/?marketName=proto_base_v3',
-    },
-    bannerVersion: 'base-incentives-v1',
-    icon: '/icons/networks/base.svg',
-  },
+  // [ChainId.base]: {
+  //   notifyText: 'A new incentives campaign is live on the Base market',
+  //   buttonText: 'Explore Base',
+  //   buttonAction: {
+  //     type: 'route' as const,
+  //     value: '/markets/?marketName=proto_base_v3',
+  //   },
+  //   bannerVersion: 'base-incentives-v1',
+  //   icon: '/icons/networks/base.svg',
+  // },
 
   // [ChainId.sonic]: {
   //   notifyText: 'Swaps are now live on Sonic',
