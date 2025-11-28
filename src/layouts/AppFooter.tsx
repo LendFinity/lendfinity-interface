@@ -60,7 +60,12 @@ const FOOTER_ICONS = [
 ];
 
 export function AppFooter() {
-  const FOOTER_LINKS = [
+  const FOOTER_LINKS: {
+    href: string;
+    label: React.ReactNode;
+    key: string;
+    onClick?: (event: React.MouseEvent) => void;
+  }[] = [
     // {
     //   href: 'https://aave.com/terms-of-service',
     //   label: <Trans>Terms</Trans>,
